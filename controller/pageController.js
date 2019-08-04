@@ -18,6 +18,33 @@ function getAdminCategories(req, res) {
 function getAdminComments(req, res) {
     res.render('../views/admin/comments.ejs');
 }
+function getAdminLogin(req,res){
+    res.render('../views/admin/login.ejs');
+}
+function getAdminNavMenus(req,res){
+    res.render('../views/admin/nav-menus.ejs');
+}
+function getAdminPasswordReset(req,res){
+    res.render('../views/admin/password-reset.ejs');
+}
+function getAdminPostAdd(req,res){
+    res.render('../views/admin/post-add.ejs');
+}
+function getAdminPosts(req,res){
+    res.render('../views/admin/posts.ejs');
+}
+function getAdminProfile(req,res){
+    res.render('../views/admin/profile.ejs');
+}
+function getAdminSettings(req,res){
+    res.render('../views/admin/settings.ejs');
+}
+function getAdminSlides(req,res){
+    res.render('../views/admin/slides.ejs');
+}
+function getAdminUsers(req,res){
+    res.render('../views/admin/users.ejs');
+}
 let controller = {
     //前端页面
     getIndex,
@@ -27,5 +54,14 @@ let controller = {
     getAdminIndex,
     getAdminCategories,
     getAdminComments,
+    getAdminLogin,
+    getAdminNavMenus,
+    getAdminPasswordReset,
+    getAdminPostAdd,
+    getAdminPosts,
+    getAdminProfile,
+    getAdminSettings,
+    getAdminSlides,
+    getAdminUsers
 }
 module.exports = controller;
