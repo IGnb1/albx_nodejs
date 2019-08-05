@@ -12,6 +12,8 @@ function userLogin(req,res){
                 // console.log(data)
                 if(data.password == obj.password){
                     //写入session状态保持
+                    req.session.isLogin = 'true';
+                    req.session.currentUser = data;
                     res.json({code:200,msg:'登录成功'})
                 }else{
                     res.json({code: 400,msg:'密码错误'})

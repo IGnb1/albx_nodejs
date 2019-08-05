@@ -6,9 +6,10 @@ $(function () {
             url: 'http://127.0.0.1:3000/login',
             data: $('.login-wrap').serialize(),
             success(res) {
-                // console.log(res)
-                if(res.code === 200){
-                    location.href = '/'
+                if(res.code === 400){
+                    $('.alert-danger').fadeIn(500).show().text(res.msg);
+                }else{
+                    location.href = '/admin'
                 }
             }
         })
