@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('./controller/pageController');
+const userController = require('./controller/userController');
 
 router
     //前台页面
@@ -21,7 +22,5 @@ router
     .get('/admin/slides',controller.getAdminSlides)
     .get('/admin/users',controller.getAdminUsers)
     //业务处理路由
-    .post('/login',(req,res)=>{
-
-    })
+    .post('/login',userController.userLogin)
 module.exports = router;
