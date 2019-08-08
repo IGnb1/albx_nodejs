@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="../assets/vendors/bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="../assets/vendors/font-awesome/css/font-awesome.css">
   <link rel="stylesheet" href="../assets/css/admin.css">
+  <script src="/assets/js/jquery.js"></script>
 </head>
 <body>
   <div class="main">
@@ -23,18 +24,19 @@
         <!-- show when multiple checked -->
         <a class="btn btn-danger btn-sm" href="javascript:;" style="display: none">批量删除</a>
         <form class="form-inline">
-          <select name="" class="form-control input-sm">
-            <option value="">所有分类</option>
-            <option value="">未分类</option>
+          <select name="" class="form-control input-sm cateSelector">
+            <%# <option value="">所有分类</option>
+            <option value="">未分类</option> %>
           </select>
-          <select name="" class="form-control input-sm">
-            <option value="">所有状态</option>
-            <option value="">草稿</option>
-            <option value="">已发布</option>
+          <select name="" class="form-control input-sm statuSelector">
+            <option value="all">所有状态</option>
+            <option value="drafted">草稿</option>
+            <option value="published">已发布</option>
           </select>
-          <button class="btn btn-default btn-sm">筛选</button>
+          <%# <button class="btn btn-default btn-sm">筛选</button> %>
+          <input type='button' class="btn btn-default btn-sm btn-search" value="筛选">
         </form>
-        <ul class="pagination pagination-sm pull-right">
+        <ul class="pagination pagination-sm pull-right" style='float:right'>
           <li><a href="#">上一页</a></li>
           <li><a href="#">1</a></li>
           <li><a href="#">2</a></li>
@@ -55,7 +57,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <%# <tr>
             <td class="text-center"><input type="checkbox"></td>
             <td>随便一个名称</td>
             <td>小小</td>
@@ -90,7 +92,7 @@
               <a href="javascript:;" class="btn btn-default btn-xs">编辑</a>
               <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
             </td>
-          </tr>
+          </tr> %>
         </tbody>
       </table>
     </div>
@@ -98,7 +100,25 @@
 
   <%- include('./layouts/admin_aside.ejs') %>
 
-  <script src="../assets/vendors/jquery/jquery.js"></script>
   <script src="../assets/vendors/bootstrap/js/bootstrap.js"></script>
+  <script src="/assets/vendors/bootstrappaginator/bootstrap-paginator.min.js"></script>
+  <script type='text/html' id='postTemplate'>
+    {{each data value }}
+      <tr>
+          <td class="text-center"><input type="checkbox"></td>
+          <td>{{value.title}}</td>
+          <td>{{value.nickname}}</td>
+          <td>{{value.name}}</td>
+          <td class="text-center">{{value.created}}</td>
+          <td class="text-center">{{value.status == 'published'? '已发布':'草稿'}}</td>
+          <td class="text-center">
+            <a href="javascript:;" class="btn btn-default btn-xs">编辑</a>
+            <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
+          </td>
+      </tr>
+    {{ /each }}
+  </script>
+  <script src='/assets/vendors/template/template-web.js'></script>
+  <script src='/assets/js/posts1.js'></script>
 </body>
 </html>
