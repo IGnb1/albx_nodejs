@@ -4,6 +4,7 @@ const controller = require('./controller/pageController');
 const userController = require('./controller/userController');
 const postController = require('./controller/postController');
 const cateController = require('./controller/cateController');
+const uploadController = require('./controller/uploadController');
 
 router
     //前台页面
@@ -27,4 +28,8 @@ router
     .post('/login',userController.userLogin)
     .get('/getAllPost',postController.getAllPost)
     .get('/getAllCate',cateController.getAllCate)
+    .post('/uploadImg',uploadController.uploadImg)
+    .post('/addPost',postController.addPost)
+    .get('/getPostById',postController.getPostById)
+    .post('/editPostById',postController.editPostById)
 module.exports = router;
