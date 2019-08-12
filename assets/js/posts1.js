@@ -56,7 +56,23 @@ $(function () {
             cate: $('.cateSelector').val(),
             statu: $('.statuSelector').val()
         }
-        console.log(obj.cate,obj.statu)
+        console.log(obj.cate, obj.statu)
         init(obj)
+    })
+
+    //删除
+    $('tbody').on('click', '.btnDel', function () {
+        let id = $(this).data();
+        console.log(id);
+        $.ajax({
+            url: '/deletePostById',
+            data: id,
+            success(res) {
+                // console.log(res);
+                if (res.code === 200) {
+                    $('.alert-danger').html(res.msg).fadeIn(500).delay(3000).fadeOut(500);
+                }
+            }
+        })
     })
 })

@@ -32,4 +32,7 @@ router
     .post('/addPost',postController.addPost)
     .get('/getPostById',postController.getPostById)
     .post('/editPostById',postController.editPostById)
+    .get('/deletePostById',postController.deletePostById)
+    .post('/addCate',cateController.addCate)
+    .post('/editCate',cateController.editCate)
 module.exports = router;

@@ -64,7 +64,23 @@ function editPostById(req, res) {
         }
     })
 }
+function deletePostById(req, res) {
+    let id = req.query.id;
+    // console.log(obj)
+    model.deletePostById(id, (err) => {
+        if (err) {
+            console.log(err)
+            res.json({ code: 400, msg: '数据删除失败' })
+        } else {
+            res.json({
+                code: 200,
+                msg: '数据删除成功'
+            })
+        }
+    })
+}
+
 let controller = {
-    getAllPost, addPost, getPostById, editPostById
+    getAllPost, addPost, getPostById, editPostById, deletePostById
 }
 module.exports = controller;

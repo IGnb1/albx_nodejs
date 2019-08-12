@@ -17,12 +17,13 @@
         <h1>分类目录</h1>
       </div>
       <!-- 有错误信息时展示 -->
-      <!-- <div class="alert alert-danger">
-        <strong>错误！</strong>发生XXX错误
-      </div> -->
+      <div class="alert alert-danger" style='display:none'>
+        <strong>提示！</strong><span>发生XXX错误</span>
+      </div>
       <div class="row">
         <div class="col-md-4">
           <form>
+            <input type="hidden" name="id" id='id'>
             <h2>添加新分类目录</h2>
             <div class="form-group">
               <label for="name">名称</label>
@@ -54,24 +55,7 @@
               </tr>
             </thead>
             <tbody>
-              <%# <tr>
-                <td class="text-center"><input type="checkbox"></td>
-                <td>未分类</td>
-                <td>uncategorized</td>
-                <td class="text-center">
-                  <a href="javascript:;" class="btn btn-info btn-xs">编辑</a>
-                  <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-                </td>
-              </tr>
-              <tr>
-                <td class="text-center"><input type="checkbox"></td>
-                <td>未分类</td>
-                <td>uncategorized</td>
-                <td class="text-center">
-                  <a href="javascript:;" class="btn btn-info btn-xs">编辑</a>
-                  <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-                </td>
-              </tr>
+              <%# 
               <tr>
                 <td class="text-center"><input type="checkbox"></td>
                 <td>未分类</td>
@@ -95,11 +79,11 @@
   <script type='text/template' id='temp'>
     {{each data value}}
       <tr>
-        <td class="text-center"><input type="checkbox"></td>
+        <td class="text-center"><input type="checkbox" data-id='{{value.id}}'></td>
         <td>{{value.name}}</td>
         <td>{{value.slug}}</td>
         <td class="text-center">
-          <a href="javascript:;" class="btn btn-info btn-xs btnedit" data-name='{{value.name}}' data-slug='{{value.slug}}'>编辑</a>
+          <a href="javascript:;" class="btn btn-info btn-xs btnedit" data-id='{{value.id}}' data-name='{{value.name}}' data-slug='{{value.slug}}'>编辑</a>
           <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
         </td>
       </tr>

@@ -49,37 +49,48 @@ function getAllPost(obj, callback) {
         }
     })
 }
-function addPost(obj,callback){
+function addPost(obj, callback) {
     let sql = `insert into posts set ?`;
-    conn.query(sql,obj,(err,result)=>{
-        if(err){
+    conn.query(sql, obj, (err, result) => {
+        if (err) {
             callback(err);
-        }else{
+        } else {
             callback(null)
         }
     })
 }
-function getPostById(id,callback){
-    let sql = 'SELECT * FROM posts where id='+id;
-    conn.query(sql,(err,result)=>{
-        if(err){
+function getPostById(id, callback) {
+    let sql = 'SELECT * FROM posts where id=' + id;
+    conn.query(sql, (err, result) => {
+        if (err) {
             callback(err)
-        }else{
-            callback(null,result[0])
+        } else {
+            callback(null, result[0])
         }
     })
 }
-function editPostById(obj,callback){
+function editPostById(obj, callback) {
     let sql = `UPDATE posts set ? where id=?`;
-    conn.query(sql,[obj,obj.id],(err,result)=>{
-        if(err){
+    conn.query(sql, [obj, obj.id], (err, result) => {
+        if (err) {
             callback(err)
-        }else{
-            callback(null,result);
+        } else {
+            callback(null, result);
         }
     })
 }
+function deletePostById(id, callback) {
+    let sql = `delete from posts where id=?`;
+    conn.query(sql, [id], (err, result) => {
+        if (err) {
+            callback(err)
+        } else {
+            callback(null, result);
+        }
+    })
+}
+
 let model = {
-    getAllPost,addPost,getPostById,editPostById
+    getAllPost, addPost, getPostById, editPostById, deletePostById
 }
 module.exports = model;
