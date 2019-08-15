@@ -22,7 +22,7 @@ function addCate(obj, callback) {
 }
 function editCate(obj, callback) {
     let sql = `UPDATE categories set ? WHERE \`id\` =?`;
-    conn.query(sql,[obj,obj.id],(err,result)=>{
+    conn.query(sql, [obj, obj.id], (err, result) => {
         if (err) {
             callback(err)
         } else {
@@ -30,7 +30,30 @@ function editCate(obj, callback) {
         }
     })
 }
+//删除分类
+function delCateById(obj, callback) {
+    let sql = `DELETE FROM categories WHERE \`id\`=${obj.id}`;
+    conn.query(sql, (err, result) => {
+        if (err) {
+            callback(err)
+        } else {
+            callback(null)
+        }
+    })
+}
+//批量删除
+function delAnyCateById(obj, callback) {
+    let sql = `DELETE FROM categories where \`id\` in (${obj.obj})`;
+    conn.query(sql, (err, result) => {
+        if (err) {
+            callback(err)
+        } else {
+            callback(null)
+        }
+    })
+
+}
 let model = {
-    getAllCate, addCate, editCate
+    getAllCate, addCate, editCate, delCateById, delAnyCateById
 }
 module.exports = model;

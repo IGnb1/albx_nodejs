@@ -80,6 +80,7 @@ function deletePostById(req, res) {
     })
 }
 
+
 let controller = {
     getAllPost, addPost, getPostById, editPostById, deletePostById
 }

@@ -35,4 +35,6 @@ router
     .get('/deletePostById',postController.deletePostById)
     .post('/addCate',cateController.addCate)
     .post('/editCate',cateController.editCate)
+    .post('/delCateById',cateController.delCateById)
+    .post('/delAnyCateById',cateController.delAnyCateById)
 module.exports = router;

@@ -15,7 +15,8 @@ function getAllCate(req, res) {
 }
 function addCate(req, res) {
     let obj = req.body;
-    console.log(obj)
+    // console.log(obj)
+    obj.id = null
     model.addCate(obj, (err, result) => {
         if (err) {
             res.json({ code: 400, msg: '数据新增失败' })
@@ -40,7 +41,37 @@ function editCate(req, res) {
         }
     })
 }
+//删除分类
+function delCateById(req, res) {
+    let obj = req.body;
+    // console.log(obj)
+    model.delCateById(obj, err => {
+        if (err) {
+            res.json({ code: 400, msg: '数据删除失败' })
+        } else {
+            res.json({
+                code: 200,
+                msg: '数据删除成功'
+            })
+        }
+    })
+}
+//批量删除
+function delAnyCateById(req, res) {
+    let obj = req.body;
+    console.log(obj)
+    model.delAnyCateById(obj, err => {
+        if (err) {
+            res.json({ code: 400, msg: '数据删除失败' })
+        } else {
+            res.json({
+                code: 200,
+                msg: '数据删除成功'
+            })
+        }
+    })
+}
 let controller = {
-    getAllCate, addCate, editCate
+    getAllCate, addCate, editCate, delCateById, delAnyCateById
 }
 module.exports = controller;
